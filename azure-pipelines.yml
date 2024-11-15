@@ -73,3 +73,11 @@ steps:
     script: |
       cd src/MyPortalDemo.Migrator
       echo "y" | dotnet run --project MyPortalDemo.Migrator.csproj
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'BT Azure subscription(d9495062-fe99-4b2d-9a80-8eb442a7af53)'
+    appType: 'webApp'
+    WebAppName: 'AzureAspNet'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
